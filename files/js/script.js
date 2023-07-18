@@ -37,10 +37,10 @@ $("#center-footer-input").keyup(function (event) {
 });
 
 document.addEventListener("click", function (e) {
-	if (e.target.closest('.channels__name')) {
+	if (e.target.closest('.channels__name') && !e.target.closest('.channels__name._active')) {
+		document.querySelector('.channels__name._active') ? document.querySelector('.channels__name._active').classList.remove('_active') : null;
 		e.target.closest('.channels__name').classList.add('_active')
 		const text = e.target.closest('.channels__name').innerHTML
-		document.querySelector('.channels__name._active').classList.remove('_active');
 		document.querySelector('.center__title').innerHTML = text.replace(/#\s+/, '#')
 		document.querySelector('#center-footer-input').placeholder = 'Message in ' + text.replace(/#\s+/, '#')
 	}
